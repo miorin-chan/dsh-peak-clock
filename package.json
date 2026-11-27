@@ -1,0 +1,41 @@
+{
+  "name": "dsh-peak-clock",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shows whether DeepSeek tokens are billed at peak or off-peak rates, and how long the current window lasts, above the sidebar account row.",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "node scripts/build.mjs && node test/render.mjs",
+    "check": "npm run typecheck && node scripts/build.mjs --check && node test/render.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "18.3.12",
+    "typescript": "5.9.3"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  }
+}

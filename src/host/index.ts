@@ -1,0 +1,8 @@
+/**
+ * Host half of dsh-peak-clock.
+ *
+ * Deliberately inert: the pill is pure Client UI and needs no Host service. The
+ * entry exists so the bundle has a mountable row and a place to grow a Host
+ * half later (for example a holiday table fetched once per day).
+ */
+export function apply(): void {}
